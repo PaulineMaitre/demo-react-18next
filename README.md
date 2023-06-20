@@ -1,46 +1,106 @@
-# Getting Started with Create React App
+# Demo react-i18next
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Install i18n libraries
 
-## Available Scripts
+Run these lines to install i18n libraries
+```bash
+npm install react-i18next i18next --save
+npm install i18next-http-backend i18next-browser-languagedetector --save
+```
 
-In the project directory, you can run:
+## Set up i18n.js file
 
-### `npm start`
+In `src` folder, create a `i18n.js` file :
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```js
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+import Backend from 'i18next-http-backend';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
-### `npm test`
+i18n.use(Backend)
+    .use(LanguageDetector)
+    .use(initReactI18next)
+    .init({
+        fallbackLng: 'en',
+        debug: true,
+        interpolation: {
+            escapeValue: false,
+        }
+    });
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+export default i18n;
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Backend will allow you to import translations for external files.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Then, import i18n in your `index.tsx` file:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```js
+import './i18n'
+```
 
-### `npm run eject`
+## Create translation tables
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+In the `public` folder, create one folder by language, and one `translation.json` file into each one of them.
+The tree will look like this:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+├───public
+│   ├───locales
+│           ├───en
+│               ├───translations.json
+│           ├───fr
+│               ├───translations.json
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+You can add as many languages as you want.
+In each one of your `translations.json` files, put your translations like this:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```json
+{
+  "app_name": "Cannes winners",
+  "header": {
+    "year": "Year",
+    "movie_title": "Movie title",
+    "director": "Director"
+  },
+  "titles": {
+    "anatomy_of_a_fall": "Anatomy of a Fall",
+    "triangle_of_sadness": "Triangle of Sadness",
+    "titane": "Titane",
+    "parasite": "Parasite",
+    "shoplifters": "Shoplifters",
+    "the_square": "The Square",
+    "i_daniel_blake": "I, Daniel Blake",
+    "dheepan": "Dheepan",
+    "winter_sleep": "Winter Sleep",
+    "blue_is_the_warmest_colour": "Blue Is the Warmest Colour"
+  }
+}
+```
 
-## Learn More
+## Translate your content
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Use the useTranslation hook to retrieve content with its key:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```tsx
+import React from "react"
+import { useTranslation } from 'react-i18next'
+import { LanguageSelector } from "./LanguageSelector"
+
+export const Example: React.FC = () => {
+    const { t, i18n } = useTranslation()
+    return (
+       <div>
+          {t('app_name')}
+       </div>
+    )
+}
+```
+
+## Sources
+
+https://react.i18next.com/latest/using-with-hooks

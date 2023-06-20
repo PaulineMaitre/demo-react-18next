@@ -1,0 +1,20 @@
+{
+  "app_name": "Cannes winners",
+  "header": {
+    "year": "Year",
+    "movie_title": "Movie title",
+    "director": "Director"
+  },
+  "titles": {
+    "anatomy_of_a_fall": "Anatomy of a Fall",
+    "triangle_of_sadness": "Triangle of Sadness",
+    "titane": "Titane",
+    "parasite": "Parasite",
+    "shoplifters": "Shoplifters",
+    "the_square": "The Square",
+    "i_daniel_blake": "I, Daniel Blake",
+    "dheepan": "Dheepan",
+    "winter_sleep": "Winter Sleep",
+    "blue_is_the_warmest_colour": "Blue Is the Warmest Colour"
+  }
+}

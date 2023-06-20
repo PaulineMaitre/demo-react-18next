@@ -1,0 +1,19 @@
+{
+  "app_name": "Palmes d'or de Cannes",
+  "header": {
+    "year": "Année",
+    "movie_title": "Titre du film",
+    "director": "Directeur"
+  },
+  "titles": {
+    "anatomy_of_a_fall": "Anatomie d'une chute",
+    "triangle_of_sadness": "Sans filtre",
+    "titane": "Titane",
+    "shoplifters": "Une affaire de famille",
+    "the_square": "The Square",
+    "i_daniel_blake": "Moi, Daniel Blake",
+    "dheepan": "Dheepan",
+    "winter_sleep": "Sommeil d'Hiver",
+    "blue_is_the_warmest_colour": "La vie d'Adèle"
+  }
+}
