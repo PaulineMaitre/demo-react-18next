@@ -13,7 +13,7 @@ export const Table: React.FC = () => {
 
     return (
         <div className={'h-screen p-6 text-white'}>
-            <table className={'w-[70%] mx-auto text-left'}>
+            <table className={'w-[70%] mx-auto text-left table-fixed'}>
                 <thead className={'bg-gray-200 text-gray-800'}>
                 <tr>
                     <th className={'p-3'}>{t("header.year")}</th>
