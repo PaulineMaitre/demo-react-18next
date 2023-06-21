@@ -5,12 +5,8 @@ import Select from 'react-select';
 export const LanguageSelector: React.FC = () => {
     const {i18n} = useTranslation();
 
-    const updateLanguage = (language: string): void => {
-        i18n.changeLanguage(language)
-    }
-
     const handleChange = (selectedOption: any): void => {
-        updateLanguage(selectedOption.value)
+        i18n.changeLanguage(selectedOption.value)
     }
 
     const options = [
